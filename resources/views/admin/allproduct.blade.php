@@ -17,10 +17,10 @@
                     <th>ID</th>
                     <th>Tên sản phẩm</th>
                     <th>Danh mục</th>
+                    <th>Thương hiệu</th>
                     <th>Giá</th>
                     <th>Ảnh sản phẩm</th>
-                    <th>Mô tả sản phẩm</th>
-                    <th></th>
+                    <th>Chức năng</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,24 +28,16 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->title }}</td>
-                        <td>
-                            <?php
-                            if ($item->category_id == 0) {
-                                echo 'Nam';
-                            } else {
-                                echo 'Nữ';
-                            }
-                            ?>
-                        </td>
+                        <td>{{ $item->category_name}}</td>
+                        <td>{{ $item->brand_name}}</td>
                         <td>{{ $item->price }}</td>
-                        <td><img src="public/asset/product/{{ $item->image }}" class="allproducts_table_image"alt=""></td>
-                        <td>{{ $item->description }}</td>
+                        <td><img src="asset/product/{{ $item->image }}" class="allproducts_table_image"alt=""></td>
                         <td>
                             <button type="button" class="btn btn-outline-primary"><a
                                     href="{{ URL::to('edit-product/' . $item->id) }}">Sửa</a></button>
                             <button type="button" class="btn btn-outline-primary"> <a
                                     onclick="return confirm('Bạn có chắc xóa sản phẩm này hay không?')"
-                                    href="{{ URL::to('delete-product/' . $item->id) }}">Xóa</a></button>
+                                    href="{{ URL::to('delete-product/'.$item->id) }}">Xóa</a></button>
 
                         </td>
                     </tr>

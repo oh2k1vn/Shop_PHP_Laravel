@@ -13,14 +13,6 @@
     <div class="addproduct">
         <h3>Thêm sản phẩm</h3>
 
-        <?php
-        $message = Session::get('message');
-        if ($message) {
-            echo '<span class="message">', $message, '</span>';
-            Session::put('message', null);
-        }
-        ?>
-
         <form action="{{ URL::to('/save-product') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
@@ -34,13 +26,23 @@
                 </div>
                 <select class="form-select" aria-label="Default select example" name="category_id">
                     <option selected>Danh mục sản phẩm: </option>
-                    <option value="0">Nam</option>
-                    <option value="1">Nữ</option>
+                    @foreach ($cate_product as $cate)
+                        <option value="{{ $cate->id }}">{{ $cate->category_name }}</option>
+                    @endforeach
+
+                </select>
+
+                <select class="form-select" aria-label="Default select example" name="brand_id">
+                    <option selected>Thương hiệu sản phẩm: </option>
+                    @foreach ($brand_product as $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
+                    @endforeach
+
                 </select>
 
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Mô tả sản phẩm</label>
-                    <input name="description" type="text" class="form-control" id="exampleInputEmail1"
+                    <input name="desc" type="text" class="form-control" id="exampleInputEmail1"
                         aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
@@ -57,8 +59,7 @@
 
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Nội dung sản phẩm</label>
-                    <textarea name="content" class="form-control" id="exampleFormControlTextarea1"
-                        rows="3"></textarea>
+                    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>

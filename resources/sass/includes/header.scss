@@ -1,5 +1,5 @@
 .header {
-    position: fixed;
+    position: sticky;
     height: 80px;
     background-color: rgb(51, 51, 51);
     top: 0;
@@ -57,14 +57,13 @@
                 color: hsla(0, 0%, 100%, 0.6);
                 transition: transform 0.5s ease;
                 display: flex;
-                align-items: center ;
+                align-items: center;
                 &:hover {
                     color: #fff;
                 }
-                
             }
             &_a {
-                width: 100%;
+                width: 200px;
                 padding: 0 !important;
                 position: absolute;
                 top: 3.8rem;
@@ -74,34 +73,25 @@
                 line-height: 50px;
                 color: #f1f2f3;
                 text-decoration: none;
-                background-color: rgb(51, 51, 51);
-                transition: .3s linear;
+                transition: 0.3s linear;
 
                 visibility: hidden;
                 opacity: 0;
                 &_li {
                     list-style: none;
-                    padding: 8px 0;
                     text-align: center;
+                    position: relative;
                     a {
+                        background-color: rgb(51, 51, 51);
                         font-size: 14.5px;
                         justify-content: center;
-                    }
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                        height: 2px;
-                        background-color: tomato;
-                        transform-origin: bottom right;
-                        transform: scaleX(0);
-                        transition: transform 0.5s ease;
-                    }
-                    &:hover::before {
-                        transform-origin: bottom left;
-                        transform: scaleX(1);
+                        justify-content: flex-start;
+                        padding: 0 2rem;
+                        transition: 0.3s ease;
+                        &:hover {
+                            background-color: tomato;
+                            transform: translateX(10%);
+                        }
                     }
                 }
             }
@@ -207,11 +197,10 @@
             color: #fff;
             cursor: pointer;
             transition: 0.3s linear;
-            
+
             &:hover {
                 color: tomato;
             }
         }
     }
 }
-

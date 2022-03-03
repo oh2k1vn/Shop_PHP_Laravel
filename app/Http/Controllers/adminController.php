@@ -65,16 +65,28 @@ class adminController extends Controller
     {
         $this->authlogin();
 
-        return view('admin.addproduct');
+
+        $cate_product = DB::table('category')->orderBy('id', 'asc')->get();
+        $brand_product = DB::table('brand')->orderBy('id', 'asc')->get();
+
+        return view('admin.addproduct')->with('cate_product', $cate_product)->with('brand_product', $brand_product);
     }
 
     public function allProduct()
     {
         $this->authlogin();
 
-        $allproduct = DB::table('product')->get();
+        $allproduct = DB::table('product')
+            ->join('category', 'category.id', '=', 'product.category_id')
+            ->join('brand', 'brand.id', '=', 'product.brand_id')->orderBy('product.id', 'asc')->get();
+
         $managerCategoryProduct = view('admin.allproduct')->with('allproduct', $allproduct);
         return view('admin')->with('admin.allproduct', $managerCategoryProduct);
+
+        // echo '<pre>';
+        // print_r($allproduct);
+        // echo '</pre>';
+
     }
 
     public function saveProduct(Request $request)
@@ -83,10 +95,10 @@ class adminController extends Controller
 
         $data = array();
 
-
-        $data['category_id'] = $request->category_id;
         $data['title'] = $request->title;
-        $data['description'] = $request->description;
+        $data['category_id'] = $request->category_id;
+        $data['brand_id'] = $request->brand_id;
+        $data['desc'] = $request->desc;
         $data['content'] = $request->content;
         $data['price'] = $request->price;
         $data['image'] = $request->image;
@@ -97,38 +109,51 @@ class adminController extends Controller
             $get_image_name = $get_image->getClientOriginalExtension();
             $image_name = current(explode('.', $get_image_name));
             $new_image = $image_name . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('public/asset/product', $new_image);
+            $get_image->move('asset/product', $new_image);
             $data['image'] = $new_image;
-
             DB::table('product')->insert($data);
-            Session::put('message', 'Thêm Sản phẩm thành công');
             return Redirect::to('all-product');
         }
-        // $data['status'] = $request->status;
         $data['image'] = '';
 
+
+
         DB::table('product')->insert($data);
-        Session::put('message', 'Thêm Sản phẩm thành công');
         return Redirect::to('all-product');
+
+
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
     }
 
     public function editProduct($id)
     {
         $this->authlogin();
 
+        $cate_product = DB::table('category')->orderBy('id', 'desc')->get();
+        $brand_product = DB::table('brand')->orderBy('id', 'desc')->get();
+
         $editproduct = DB::table('product')->where('id', $id)->get();
-        $managerCategoryProduct = view('admin.editproduct')->with('editproduct', $editproduct);
+        $managerCategoryProduct = view('admin.editproduct')->with('editproduct', $editproduct)->with('cate_product', $cate_product)->with('brand_product', $brand_product);
         return view('admin')->with('admin.editproduct', $managerCategoryProduct);
+
+        // echo '<pre>';
+        // print_r($editproduct);
+        // echo '</pre>';
     }
 
     public function deleteProduct($id)
     {
         $this->authlogin();
 
+        $product = DB::table('product')->where('id', $id);
+        $product->delete();
 
-        DB::table('product')->where('id', $id)->delete();
-        Session::put('message', 'Xóa Sản phẩm thành công');
+
         return Redirect::to('all-product');
+
+
     }
 
     public function updateProduct(Request $request, $id)
@@ -139,8 +164,9 @@ class adminController extends Controller
         $data = array();
 
         $data['category_id'] = $request->category_id;
+        $data['brand_id'] = $request->brand_id;
         $data['title'] = $request->title;
-        $data['description'] = $request->description;
+        $data['desc'] = $request->desc;
         $data['content'] = $request->content;
         $data['price'] = $request->price;
         $data['status'] = $request->status;
@@ -150,17 +176,15 @@ class adminController extends Controller
             $get_image_name = $get_image->getClientOriginalExtension();
             $image_name = current(explode('.', $get_image_name));
             $new_image = $image_name . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('public/asset/product', $new_image);
+            $get_image->move('asset/product', $new_image);
             $data['image'] = $new_image;
 
             DB::table('product')->where('id', $id)->update($data);
-            Session::put('message', 'Thêm Sản phẩm thành công');
             return Redirect::to('all-product');
         }
 
 
         DB::table('product')->where('id', $id)->update($data);
-        Session::put('message', 'Cập nhật Sản phẩm thành công');
         return Redirect::to('all-product');
     }
 }

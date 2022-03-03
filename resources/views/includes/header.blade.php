@@ -5,17 +5,14 @@
     <div class="header_menu">
         <li class="header_menu_item"><a href="#">Shop<i class='bx bx-chevron-down'></i></a>
             <ul class="header_menu_item_a">
-                <li class="header_menu_item_a_li"><a href="#">Áo</a></li>
-                <li class="header_menu_item_a_li"><a href="#">Quần</a></a></li>
-                <li class="header_menu_item_a_li"><a href="#">Áo khoác</a></li>
-                <li class="header_menu_item_a_li"><a href="#">Bao lô</a></li>
-                <li class="header_menu_item_a_li"><a href="#">Linh kiện</a></li>
+                @foreach ($cate_product as $item)
+                    <li class="header_menu_item_a_li"><a href="{{ URL::to('danh-muc-san-pham/'.$item->id) }}">{{ $item->category_name }}</a></li>
+                @endforeach
             </ul>
         </li>
-        <li class="header_menu_item"><a href="#">Sale</a></li>
-        <li class="header_menu_item"><a href="#">New</a></li>
-        <li class="header_menu_item"><a href="#">Contact</a></li>
-        <li class="header_menu_item"><a href="#">about</a></li>
+        {{-- <li class="header_menu_item"><a href="{{ route('productPage') }}">Sản phẩm mới</a></li> --}}
+        <li class="header_menu_item"><a href="#">Liên hệ</a></li>
+        <li class="header_menu_item"><a href="{{ route('aboutPage') }}">about</a></li>
     </div>
     <div class="header_block">
         <div class="header_block_search">
