@@ -1,0 +1,46 @@
+.addproduct {
+    background-color: #fff;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    padding: 2rem;
+    min-height: 100%;
+    margin: 1rem;
+    position: relative;
+    h3 {
+        font-size: 24px;
+        color: tomato;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+    form {
+        width: 80%;
+        margin: 0 auto;
+        .form-select {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #fff;
+            color: tomato;
+            border: 1px solid tomato;
+            border-radius: $border-radius;
+            padding: .6rem 0;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 2rem auto 0;
+            width: 20%;
+            cursor: pointer;
+            transition: .4s linear;
+            &:hover {
+                background-color: tomato;
+                border: 1px solid tomato;
+                color: #fff;
+            }
+        }
+    }
+    .btn-edit {
+        position: absolute;
+        top: 2%;
+        right: 0;
+    }
+}
