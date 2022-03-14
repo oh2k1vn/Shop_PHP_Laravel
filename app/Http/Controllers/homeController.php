@@ -5,46 +5,107 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\brand;
+use App\Models\category;
+// use App\Models\User;
+use Session;
+use App\cart;
 
 class homeController extends Controller
 {
     public function index(){
-        
-       
-        $cate_product = DB::table('category')->orderBy('id', 'desc')->get();
-        $brand_product = DB::table('brand')->orderBy('id', 'desc')->get();
 
-        $products =  DB::table('product')->orderBy('id', 'desc')->limit(8)->get();
+        $banner = DB::table('banner')->orderBy('id', 'asc')->get();
+        $promotion= DB::table('promotion')->orderBy('id', 'asc')->get();
 
-        return view('home.index')->with('cate_product',$cate_product)->with('brand_product',$brand_product)->with('products',$products);
+        $cate_product = category::orderBy('id', 'desc')->get();
+        $brand_product = brand::orderBy('id', 'desc')->get();
 
-        // dd($product);
+        $products =  product::orderBy('id', 'desc')->limit(8)->get();
+
+        // dd($products);
+
+
+        return view('home.index', compact('banner','promotion','cate_product','brand_product','products'));
+
     }
 
     public function product(){
-        return view('home.product');
+
+        $cate_product = category::orderBy('id', 'desc')->get();
+        $brand_product = brand::orderBy('id', 'desc')->get();
+
+        $products = product::orderBy('id', 'desc')->get();
+
+
+        return view('home.product')->with('products',$products)->with('cate_product',$cate_product)->with('brand_product',$brand_product);
     }
     
     public function productDetail($id){
-        $cate_product = DB::table('category')->orderBy('id','desc')->get();
-        $brand_product = DB::table('brand')->orderBy('id','desc')->get();
+        $cate_product = category::orderBy('id', 'desc')->get();
+        $brand_product = brand::orderBy('id', 'desc')->get();
 
         $productDetail = DB::table('product')
         ->join('category', 'category.id', '=', 'product.category_id')
-        ->join('brand', 'brand.id', '=', 'product.brand_id')->orderBy('product.id', 'desc')->where('product',$id)->get();
+        ->join('brand', 'brand.id', '=', 'product.brand_id')
+        ->where('product.id',$id)
+        ->get();
 
+      
 
-        return view('home.productDetail')->with('cate_product',$cate_product)->with('brand_product',$brand_product)->with('productDetail',$productDetail);
+        return view('home.productDetail', compact('cate_product','brand_product','productDetail'));
+
+        
     }
 
+    public function saveCart(Request $request){
+      
+        $cate_product = category::orderBy('id', 'desc')->get();
+        $brand_product = brand::orderBy('id', 'desc')->get();
+
+        $productID = $request->product_hidden;
+        $qty = $request->qty;
+ 
+        $data =  product::where('id',$productID)->get();
+
+        return view('home.checkout',compact('cate_product','brand_product'));
+        
+    }
+
+    // public function addCart(){
+    //     $cate_product = category::orderBy('id', 'desc')->get();
+    //     $brand_product = brand::orderBy('id', 'desc')->get();
+
+    //     $product = product::where('id',$id)->first();
+
+    //     if($product != null){
+    //         $cart = Session('Cart') ? Session('Cart') : null;
+    //         $newCart = new Cart($cart);
+    //         $newCart->addCart( $product, $id);
+
+    //         $request->Session()->put('Cart',$newCart);
+    //     }
+    //     return view('home.checkout');
+
+    // }
+
+        public function checkout(){
+            $cate_product = category::orderBy('id', 'desc')->get();
+            $brand_product = brand::orderBy('id', 'desc')->get();
+
+            return view('home.checkout',compact('cate_product', 'brand_product'));
+        }
+
     public function sigon(){
+      
+
         return view('home.sigon');
     }
 
     public function show_category($id) {
 
-        $cate_product = DB::table('category')->orderBy('id','desc')->get();
-        $brand_product = DB::table('brand')->orderBy('id','desc')->get();
+        $cate_product = category::orderBy('id', 'desc')->get();
+        $brand_product = brand::orderBy('id', 'desc')->get();
 
         $category_by_id = DB::table('product')->join('category','product.category_id','=','category.id')->where('product.category_id',$id)->get();
         $category_name = DB::table('category')->where('category.id',$id)->limit(1)->get();
@@ -54,8 +115,8 @@ class homeController extends Controller
 
     public function show_brand($id) {
 
-        $cate_product = DB::table('category')->orderBy('id','desc')->get();
-        $brand_product = DB::table('brand')->orderBy('id','desc')->get();
+        $cate_product = category::orderBy('id', 'desc')->get();
+        $brand_product = brand::orderBy('id', 'desc')->get();
 
         $brand_by_id = DB::table('product')->join('brand','product.brand_id','=','brand.id')->where('product.brand_id',$id)->get();
         $brand_name = DB::table('brand')->where('brand.id',$id)->limit(1)->get();

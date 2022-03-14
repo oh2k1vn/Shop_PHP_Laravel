@@ -35,8 +35,7 @@
                                     </div>
                                     <div class="product-card-price">
                                         {{-- <span><del>$300</del></span> --}}
-                                        <span
-                                            class="curr-price">{{ number_format($item->price) . ' ' . 'VNĐ' }}</span>
+                                        <span class="curr-price">{{number_format($item->price).'.000 '.'VNĐ'}}</span>
                                     </div>
                                 </div>
                             </div>

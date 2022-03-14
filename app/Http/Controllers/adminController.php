@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
-// use App\Models\brand;
-// use App\Models\category;
-// use App\Models\product;
+use App\Models\brand;
+use App\Models\category;
+use App\Models\product;
 // use App\Models\User;
 
 class adminController extends Controller
@@ -48,9 +48,8 @@ class adminController extends Controller
     public function addProduct()
     {
 
-
-        $cate_product = DB::table('category')->orderBy('id', 'asc')->get();
-        $brand_product = DB::table('brand')->orderBy('id', 'asc')->get();
+        $cate_product = category::orderBy('id', 'desc')->get();
+        $brand_product = brand::orderBy('id', 'desc')->get();
 
 
         return view('admin.addproduct')->with('cate_product', $cate_product)->with('brand_product', $brand_product);
@@ -58,13 +57,20 @@ class adminController extends Controller
 
     public function allProduct()
     {
+        // $product = product::orderBy('id', 'desc')->get();
 
         $allproduct = DB::table('product')
             ->join('category', 'category.id', '=', 'product.category_id')
-            ->join('brand', 'brand.id', '=', 'product.brand_id')->orderBy('product.id', 'desc')->get();
+            ->join('brand', 'brand.id', '=', 'product.brand_id')
+            // ->orderBy('product.id', 'desc')
+            ->select('product.*', 'category.category_name', 'brand.brand_name')
+            ->get();
+
+        // dd($allproduct);
 
         $managerCategoryProduct = view('admin.allproduct')->with('allproduct', $allproduct);
         return view('adminPage')->with('admin.allproduct', $managerCategoryProduct);
+
     }
 
     public function saveProduct(Request $request)

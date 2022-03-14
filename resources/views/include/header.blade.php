@@ -2,7 +2,7 @@
 <header>
     <!-- mobile menu -->
     <div class="mobile-menu bg-second">
-        <a href="{{ route('homePage') }}" class="mb-logo">ATShop</a>
+        <a href="{{ route('homePage') }}" class="mb-logo">GOB BREAKER</a>
         <span class="mb-menu-toggle" id="mb-menu-toggle">
             <i class='bx bx-menu'></i>
         </span>
@@ -15,15 +15,15 @@
         </span>
         <div class="bg-main">
             <div class="mid-header container">
-                <a href="{{ route('homePage') }}" class="logo">ATShop</a>
+                <a href="{{ route('homePage') }}" class="logo">GOB BREAKER</a>
                 <div class="search">
-                    <input type="text" placeholder="Search">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm ...">
                     <i class='bx bx-search-alt'></i>
                 </div>
                 <ul class="user-menu">
                     <li><a href="#"><i class='bx bx-bell'></i></a></li>
                     <li><a href="{{ route('loginPage') }}"><i class='bx bx-user-circle'></i></a></li>
-                    <li><a href="#"><i class='bx bx-cart'></i></a></li>
+                    <li><a href="{{ route('checkoutPage') }}"><i class='bx bx-cart'></i></a></li>
                 </ul>
             </div>
         </div>
@@ -31,7 +31,7 @@
         <div class="bg-second">
             <div class="bottom-header container">
                 <ul class="main-menu">
-                    <li><a href="#">home</a></li>
+                    <li><a href="{{ route('homePage') }}">home</a></li>
                     <!-- mega menu -->
                     <li class="mega-dropdown">
                         <a href="#">sản phẩm<i class='bx bxs-chevron-down'></i></a>
@@ -52,33 +52,11 @@
                                         <h3>Thương hiệu sản phẩm</h3>
                                         <ul>
                                             @foreach ($brand_product as $brand)
-                                                <li><a href="{{URL::to('danh-muc-san-pham/'.$brand->id)}}">{{ $brand->brand_name }}</a></li>
+                                                <li><a href="{{URL::to('thuong-hieu-san-pham/'.$brand->id)}}">{{ $brand->brand_name }}</a></li>
                                             @endforeach
                                         </ul>
                                     </div>
                                 </div>
-                                {{-- <div class="col-3 col-md-12">
-                                    <div class="box">
-                                        <h3>Categories</h3>
-                                        <ul>
-                                            <li><a href="#">Wireless</a></li>
-                                            <li><a href="#">Inear headphone</a></li>
-                                            <li><a href="#">Overear headphone</a></li>
-                                            <li><a href="#">sport headphone</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-3 col-md-12">
-                                    <div class="box">
-                                        <h3>Categories</h3>
-                                        <ul>
-                                            <li><a href="#">Wireless</a></li>
-                                            <li><a href="#">Inear headphone</a></li>
-                                            <li><a href="#">Overear headphone</a></li>
-                                            <li><a href="#">sport headphone</a></li>
-                                        </ul>
-                                    </div>
-                                </div> --}}
                             </div>
                             {{-- <div class="row img-row">
                                 <div class="col-3">

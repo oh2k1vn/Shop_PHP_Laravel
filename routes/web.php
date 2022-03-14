@@ -16,8 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [homeController::class, 'index'])->name('homePage');
+
 Route::get('/san-pham', [homeController::class, 'product'])->name('productPage');
-Route::get('/chi-tiet-san-pham/{$id}', [homeController::class, 'productDetail'])->name('productDetailPage');
+
+Route::get('/gio-hang', [homeController::class, 'checkout'])->name('checkoutPage');
+
+Route::get('/addCart', function() {
+    return view('home.checkout');
+})->name('addCartPage');
+
+
+// Route::get('/chi-tiet-san-pham/{$id}', [homeController::class, 'productDetail'])->name('productDetailPage');
+Route::get('/chi-tiet-san-pham/{id}', [homeController::class, 'productDetail'])->name('productDetailPage');
+Route::get('/chi-tiet-san-pham/add-cart/{id}', [homeController::class, 'addCart'])->name('addCart');
+Route::post('/save-cart', [homeController::class, 'saveCart']);
 
 Route::get('/danh-muc-san-pham/{id}', [homeController::class, 'show_category']);
 Route::get('/thuong-hieu-san-pham/{id}', [homeController::class, 'show_brand']);

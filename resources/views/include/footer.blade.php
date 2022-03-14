@@ -23,9 +23,9 @@
                 </ul>
             </div>
             <div class="col-3 col-md-6">
-                <h3 class="footer-head">support</h3>
+                <h3 class="footer-head">Hỗ trợ</h3>
                 <ul class="menu">
-                    <li><a href="#">Help center</a></li>
+                    <li><a href="#">about</a></li>
                     <li><a href="#">Contact us</a></li>
                     <li><a href="#">product help</a></li>
                     <li><a href="#">warranty</a></li>
@@ -35,7 +35,7 @@
             <div class="col-3 col-md-6 col-sm-12">
                 <div class="contact">
                     <h3 class="contact-header">
-                        ATShop
+                        GOB BREAKER
                     </h3>
                     <ul class="contact-socials">
                         <li><a href="#">
@@ -53,7 +53,7 @@
                     </ul>
                 </div>
                 <div class="subscribe">
-                    <input type="email" placeholder="ENTER YOUR EMAIL">
+                    <input type="email" placeholder="Email của bạn">
                     <button>subscribe</button>
                 </div>
             </div>

@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="product-card-price">
                                     {{-- <span><del>$300</del></span> --}}
-                                    <span class="curr-price">{{number_format($item->price).' '.'VNĐ'}}</span>
+                                    <span class="curr-price">{{number_format($item->price).'.000 '.'VNĐ'}}</span>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                 @endforeach
             </div>
             <div class="section-footer">
-                <a href="#" class="btn-flat btn-hover">Xem thêm</a>
+                <a href="{{ route('productPage') }}" class="btn-flat btn-hover">Xem thêm</a>
             </div>
         </div>
     </div>
