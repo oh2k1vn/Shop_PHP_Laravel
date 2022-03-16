@@ -84,7 +84,7 @@
                     </li>
                     <!-- end mega menu -->
                     <li><a href="#">blog</a></li>
-                    <li><a href="#">about</a></li>
+                    <li><a href="{{ route('aboutPage') }}">about</a></li>
                 </ul>
             </div>
         </div>

@@ -325,71 +325,132 @@ ul, li {
   color: #fff;
 }
 
+.checkout {
+  margin: 4rem 0;
+}
 .checkout .container {
   max-width: 1260px;
   margin: auto;
 }
-.checkout .container .table .product {
-  display: flex;
-  align-items: center;
+.checkout .container table,
+.checkout .container td,
+.checkout .container th {
+  border-bottom: 1px solid #ddd;
 }
-.checkout .container .table .product img {
-  max-width: 15%;
+.checkout .container .table {
   width: 100%;
-  max-height: 15%;
+  border-collapse: collapse;
+}
+.checkout .container .table_th {
+  background-color: #333333;
+  color: #fff;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.checkout .container .table_td {
+  text-align: center;
+  vertical-align: middle;
+}
+.checkout .container .table_td td {
+  position: relative;
+  padding: 1rem 0;
+}
+.checkout .container .table_td td img {
+  float: left;
+  width: 100px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.checkout .container .table .product_title {
-  flex: 1;
+.checkout .container .table_td td input {
   text-align: center;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
 }
-.checkout .container .table td, .checkout .container .table th {
-  vertical-align: middle;
+.checkout .container .table_td td input[type=number]::-webkit-inner-spin-button,
+.checkout .container .table_td td input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
-.checkout .container .table .bx {
-  font-size: 25px;
+.checkout .container .table_td td a {
+  text-decoration: none;
+  color: unset;
+}
+.checkout .container .table_td td a i {
+  font-size: 26px;
+  color: #000;
+  transition: 0.3s;
   cursor: pointer;
 }
-.checkout .container .table input {
-  padding: 8px 16px;
-  outline: none;
-  border: 1px solid #ccc;
-  text-align: center;
-  width: 50%;
-  border-radius: 10px;
+.checkout .container .table_td td a i:hover {
+  color: tomato;
 }
-.checkout .container .checkout_total {
-  margin-top: 2rem;
-  width: 50%;
-}
-.checkout .container .checkout_total p {
-  padding: 0.5rem 0;
+.checkout .container .table_td .product {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
 }
-.checkout .container .checkout_total p span {
-  flex: 1;
-  text-align: right;
+.checkout .container .table_td .product img {
+  margin-right: 2rem;
 }
-.checkout .container .checkout_total p:nth-child(4) {
-  border-bottom: 1px solid #ddd;
+.checkout .container .table_td .btn {
+  border: none;
+  background-color: tomato;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  padding: 0 5px;
+  transition: 0.4s;
+  cursor: pointer;
 }
-.checkout .container .checkout_total button {
+.checkout .container .table_td .btn:hover {
+  opacity: 0.8;
+}
+.checkout .container .total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.checkout .container .total_item {
+  width: 40%;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+.checkout .container .total_item h3 {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+.checkout .container .total_item ul li {
+  padding: 0.5rem 0;
+}
+.checkout .container .total_item ul li span {
+  float: right;
+}
+.checkout .container .total_item ul .li {
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+  font-weight: bold;
+  font-size: 24px;
+}
+.checkout .container .total_item a {
+  text-align: center;
+  display: block;
   width: 100%;
-  border-radius: 30px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid tomato;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  color: tomato;
+  background-color: #fff;
+}
+.checkout .container .total_item a:hover {
   border: 1px solid transparent;
-  padding: 15px;
   background-color: tomato;
   color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-  transition: 0.4s;
-}
-.checkout .container .checkout_total button:hover {
-  background-color: #fff;
-  color: tomato;
-  border: 1px solid tomato;
 }
 
 .number .input-number {
@@ -431,4 +492,48 @@ ul, li {
 .number .input-number-increment {
   border-left: none;
   border-radius: 0 4px 4px 0;
+}
+
+.about .image-container {
+  background-image: url("https://finebiz.com.vn/wp-content/uploads/2020/07/15.jpg");
+  background-size: cover;
+  position: relative;
+  height: 300px;
+  margin-bottom: 30px;
+}
+.about .image-container .text {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+  font-size: 5vw;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  width: 40%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
+.about_content {
+  display: flex;
+  flex-direction: column;
+}
+.about_content_item {
+  width: 100%;
+  text-align: center;
+}
+.about_content_item img {
+  margin: 2rem;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.about_content_item p {
+  display: block;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

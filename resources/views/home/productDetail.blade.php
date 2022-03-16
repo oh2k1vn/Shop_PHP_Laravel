@@ -50,7 +50,7 @@
                             </div>
                             <div class="product-info-detail">
                                 <span class="product-info-detail-title">Danh mục:</span>
-                                <a href="#">{{ $item->brand_name }}</a>
+                                <a href="{{ $item->brand_id }}">{{ $item->brand_name }}</a>
                             </div>
                             <p class="product-description">
                                 {{-- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo libero alias officiis dolore
@@ -61,14 +61,9 @@
 
                             <form action="{{ URL::to('/save-cart') }}" method="post">
                                 {{ csrf_field() }}
-                               <input type="number" name="qty" min="1" value="1">
-                               <input type="hidden" name="product_hidden" id="" value="{{$item->id}}">
-                                <div>
-                                    <button 
-                                    
-                                    type="submit" 
-                                    class="btn-flat btn-hover">Thêm vào giỏ hàng</button>
-                                </div>
+                                <input type="number" name="qty" min="1" value="1">
+                                <input type="hidden" name="product_hidden" id="" value="{{ $item->id }}">
+                                <button type="submit" class="btn-flat btn-hover">Thêm vào giỏ hàng</button>
                             </form>
 
 
@@ -233,5 +228,5 @@
 
 @section('js')
     <script src="{{ asset('js/product-detail.js') }} "></script>
-   
+
 @endsection

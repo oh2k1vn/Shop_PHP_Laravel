@@ -28,9 +28,6 @@
                             <div class="product-card-info">
                                 <div class="product-btn">
                                     <a href="{{URL::to('chi-tiet-san-pham/'.$item->id)}}" class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
-                                    <button class="btn-flat btn-hover btn-cart-add">
-                                        <i class='bx bxs-cart-add'></i>
-                                    </button>
                                 </div>
                                 <div class="product-card-name">
                                     {{$item->title}}

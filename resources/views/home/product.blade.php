@@ -25,17 +25,15 @@
                                     <div class="product-btn">
                                         <a href="{{ URL::to('chi-tiet-san-pham/' . $item->id) }}"
                                             class="btn-flat btn-hover btn-shop-now">Mua ngay</a>
-                                        <a class="btn-flat btn-hover btn-cart-add  add-cart"
-                                            href="{{ route('addCartPage') }}">
-                                            <i class='bx bxs-cart-add'></i>
-                                        </a>
+
                                     </div>
                                     <div class="product-card-name">
                                         {{ $item->title }}
                                     </div>
                                     <div class="product-card-price">
                                         {{-- <span><del>$300</del></span> --}}
-                                        <span class="curr-price">{{ number_format($item->price) . '.000 ' . 'VNĐ' }}</span>
+                                        <span
+                                            class="curr-price">{{ number_format($item->price) . '.000 ' . 'VNĐ' }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -52,14 +50,5 @@
     <script src="{{ asset('js/product.js') }} "></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function addCart(e) {
-            e.preventDefault();
-            let url = $(this).data('url');
-            alert(url);
-        }
-        $(function() {
-            $('.addCart').on('click', addCart);
-        })
-    </script>
+    
 @endsection

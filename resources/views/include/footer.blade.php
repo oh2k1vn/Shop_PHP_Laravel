@@ -3,33 +3,27 @@
     <div class="container">
         <div class="row">
             <div class="col-3 col-md-6">
-                <h3 class="footer-head">Products</h3>
+                <h3 class="footer-head">thương hiệu</h3>
                 <ul class="menu">
-                    <li><a href="#">Help center</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">product help</a></li>
-                    <li><a href="#">warranty</a></li>
-                    <li><a href="#">order status</a></li>
+                    @foreach ($brand_product as $brand)
+                        <li><a href="{{ URL::to('thuong-hieu-san-pham/' . $brand->id) }}">{{ $brand->brand_name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-3 col-md-6">
-                <h3 class="footer-head">services</h3>
+                <h3 class="footer-head">danh mục</h3>
                 <ul class="menu">
-                    <li><a href="#">Help center</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">product help</a></li>
-                    <li><a href="#">warranty</a></li>
-                    <li><a href="#">order status</a></li>
+                    @foreach ($cate_product as $cate)
+                        <li><a href="{{ URL::to('danh-muc-san-pham/' . $cate->id) }}">{{ $cate->category_name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-3 col-md-6">
                 <h3 class="footer-head">Hỗ trợ</h3>
                 <ul class="menu">
                     <li><a href="#">about</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">product help</a></li>
-                    <li><a href="#">warranty</a></li>
-                    <li><a href="#">order status</a></li>
                 </ul>
             </div>
             <div class="col-3 col-md-6 col-sm-12">

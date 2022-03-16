@@ -19,7 +19,7 @@
                         </p>
                         <div class="top-down trans-delay-0-6">
                             <button class="btn-flat btn-hover">
-                                <span>Mua ngay</span>
+                                <a href="{{$item->route}}">Mua ngay</a>
                             </button>
                         </div>
                     </div>

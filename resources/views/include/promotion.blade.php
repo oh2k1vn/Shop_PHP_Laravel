@@ -6,10 +6,10 @@
              <div class="col-4 col-md-12 col-sm-12">
                  <div class="promotion-box">
                      <div class="text">
-                         <h3>{{$item->name}}</h3>
-                         <button class="btn-flat btn-hover"><span>Bộ sưu tầm</span></button>
+                         <h3>{{ $item->name }}</h3>
+                         <a href="{{ $item->route }}"> <button class="btn-flat btn-hover">Bộ sưu tầm</button></a>
                      </div>
-                     <img src="{{ asset('images/promotion/'.$item->image) }}" alt="">
+                     <img src="{{ asset('images/promotion/' . $item->image) }}" alt="">
                  </div>
              </div>
          @endforeach
