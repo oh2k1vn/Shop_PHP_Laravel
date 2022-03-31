@@ -65,20 +65,21 @@
                     @endforeach
                 </tbody>
             </table>
-
-            {{-- <section class="checkout_total">
-                <h3>Thông tin thanh toán</h3>
-
-                <p>Tổng <span>{{ Cart::priceTotal(0,',','.') . 'VNĐ' }}</span></p>
-                <p>Thuế <span>{{ Cart::tax(0,',','.') . 'VNĐ' }}</span></p>
-                <p>Ship <span>Free</span></p>
-                <p>Thành tiền <span>{{ Cart::total(0,',','.') . 'VNĐ' }}</span></p>
-
-                <a href="{{URL::to('/login-checkout')}}">Thanh toán</a>
-            </section> --}}
+            
+            <form action="{{URL::to("/save-checkout")}}" method="post">
             <div class="total">
                 <div class="total_item w-50">
-                  <h1>Test</h1>
+                  <h3>Thông tin người dùng</h3>
+                    {{ csrf_field() }}
+                    <label >Họ và tên</label>
+                    <input type="text" name="name">
+                    <label >Số điện thoại</label>
+                    <input type="text" name="phone">
+                    <label >Địa chỉ</label>
+                    <input type="text" name="address">
+                    <label >Ghi chú</label>
+                    <input value="Đang chờ" type="hidden" name="status">
+                    <textarea name="note" id="" cols="20" rows="5"></textarea>  
                 </div>
                 <div class="total_item w-33">
                   <h3>Thông tin thanh toán</h3>
@@ -88,10 +89,12 @@
                     <li>Phí vận chuyển <span>Free</span></li>
                     <li class="li">Tổng giá <span>{{ Cart::total(0,',','.') .'.000'. ' VNĐ' }}</span></li>
                   </ul>
-                  <a href="{{URL::to('/login-checkout')}}">Thanh toán</a>
+                  <button type="submit">Thanh toán</button>
                 </div>
               </div>
         </div>
+    </form>
+
     </div>
 @endsection
 

@@ -15,7 +15,10 @@
                     <span><i class='bx bxs-chevrons-right'></i></span>
                     <a href="{{ route('productPage') }}">Tất cả sản phẩm</a>
                     <span><i class='bx bxs-chevrons-right'></i></span>
-                    <a href="./product-detail.html">JBL Tune 750TNC</a>
+                    @foreach ($productDetail as $item)
+                        
+                    <a href="#!">{{$item->title}}</a>
+                    @endforeach
                 </div>
             </div>
 
@@ -25,19 +28,6 @@
                         <div class="product-img" id="product-img">
                             <img src="{{ asset('images/' . $item->image) }}" alt="">
                         </div>
-                        {{-- <div class="box">
-                            <div class="product-img-list">
-                                <div class="product-img-item">
-                                    <img src="{{ asset('images/' . $item->image) }}" alt="">
-                                </div>
-                                <div class="product-img-item">
-                                    <img src="{{ asset('images/' . $item->image) }}" alt="">
-                                </div>
-                                <div class="product-img-item">
-                                    <img src="{{ asset('images/' . $item->image) }}" alt="">
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                     <div class="col-7 col-md-12">
                         <div class="product-info">
@@ -61,7 +51,7 @@
 
                             <form action="{{ URL::to('/save-cart') }}" method="post">
                                 {{ csrf_field() }}
-                                <input type="number" name="qty" min="1" value="1">
+                                <input type="number" name="qty" min="1" value="1" class="product-info-number">
                                 <input type="hidden" name="product_hidden" id="" value="{{ $item->id }}">
                                 <button type="submit" class="btn-flat btn-hover">Thêm vào giỏ hàng</button>
                             </form>
@@ -76,9 +66,9 @@
                     Miêu tả sản phẩm
                 </div>
                 <div class="product-detail-description">
-                    {{-- <button class="btn-flat btn-hover btn-view-description" id="view-all-description">
+                    <button class="btn-flat btn-hover btn-view-description" id="view-all-description">
                         view all
-                    </button> --}}
+                    </button>
                     <div class="product-detail-description-content">
                         <p>
                             {{ $item->content }}
@@ -87,7 +77,7 @@
                 </div>
             </div>
             @endforeach
-            {{-- <div class="box">
+            <div class="box">
                 <div class="box-header">
                     review
                 </div>
@@ -214,13 +204,13 @@
                         </ul>
                     </div>
                 </div>
-            </div> --}}
-            {{-- <div class="box">
+            </div>
+            <div class="box">
                 <div class="box-header">
                     related products
                 </div>
                 <div class="row" id="related-products"></div>
-            </div> --}}
+            </div>
         </div>
     </div>
     <!-- end product-detail content -->

@@ -24,4 +24,31 @@ class checkoutController extends Controller
 
         return view('home.login_checkout', compact('cate_product','brand_product'));
     }
+    
+    public function checkout() {
+
+       
+
+
+        // return echo 'Trang chechout';
+    }
+    
+    public function add_customer(Request $request) {
+
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = $request->password;
+        $data['phone'] = $request->phone;
+
+        $insert = DB::table('customer')->insertGetId($data);
+
+
+        Session::put('id',$insert->id);
+        Session::put('name',$request->name);
+
+        return Redirect::to('/checkout');
+    }
+
+
 }

@@ -52,6 +52,7 @@
             <div class="mb-3">
                 <label for="formFile" class="form-label">Thêm ảnh </label>
                 <input name="image" class="form-control" type="file" id="formFile">
+                
             </div>
 
 

@@ -2,9 +2,11 @@
     background-color: #fff;
     box-shadow: $box-shadow;
     border-radius: $border-radius;
-    padding: 2rem;
     min-height: 100%;
-    margin: 1rem;
+    padding: 2rem;
+    margin: 1rem {
+        left: 0;
+    }
     position: relative;
     h3 {
         font-size: 24px;
@@ -24,13 +26,13 @@
             color: tomato;
             border: 1px solid tomato;
             border-radius: $border-radius;
-            padding: .6rem 0;
+            padding: 0.6rem 0;
             font-size: 16px;
             font-weight: bold;
             margin: 2rem auto 0;
             width: 20%;
             cursor: pointer;
-            transition: .4s linear;
+            transition: 0.4s linear;
             &:hover {
                 background-color: tomato;
                 border: 1px solid tomato;

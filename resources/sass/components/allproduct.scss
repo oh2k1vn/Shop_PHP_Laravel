@@ -1,8 +1,11 @@
 .allproducts_table {
     background-color: #fff;
-    padding: 20px;
+    padding: 2rem;
     border-radius: $border-radius;
-   
+    margin: 1rem {
+        left: 0;
+    }
+
     .allproducts_table_image {
         max-width: 100px;
         max-height: 100px;

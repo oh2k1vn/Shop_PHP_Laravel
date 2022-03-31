@@ -10,6 +10,8 @@ use App\Models\brand;
 use App\Models\category;
 use App\Models\product;
 // use App\Models\User;
+use Cart;
+
 
 class adminController extends Controller
 {
@@ -165,4 +167,24 @@ class adminController extends Controller
         DB::table('product')->where('id', $id)->update($data);
         return Redirect::to('all-product');
     }
+
+    public function oders () {
+
+           $data = Cart::content();
+
+           $oder = DB::table('oders')->get();
+
+            // dd($data, $oder);
+        return view('admin.oder',compact('oder','data'));
+    }
+
+    public function update_modal (Request $request, $id) {
+
+        $oder = DB::table('oders')->get();
+        $data = Cart::content();
+
+        $status['status'] = $request->status;
+        DB::table('oders')->where('id',$id)->update($status);
+     return view('admin.oder',compact('status','oder','data'));
+ }
 }

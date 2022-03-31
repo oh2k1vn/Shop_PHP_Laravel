@@ -21,7 +21,6 @@ class cartController extends Controller
         $qty = $request->qty;
 
         $product_info = product::where('id',$productId)
-        // ->select('product.*', 'category.category_name', 'brand.brand_name')
         ->first();
 
         $data['id'] = $product_info->id;
@@ -34,11 +33,13 @@ class cartController extends Controller
         Cart::add($data);
         Cart::setGlobalTax(10);
 
+
         // Cart::destroy();
         return Redirect::to('show-cart');
     }
 
-    public function show_cart() {
+    public function show_cart(Request $request) {
+
         $cate_product = category::orderBy('id', 'desc')->get();
         $brand_product = brand::orderBy('id', 'desc')->get();
 
@@ -60,4 +61,19 @@ class cartController extends Controller
 
        return Redirect::to('show-cart');
     }
+
+    public function save_checkout(Request $request) {
+        $data = array();
+
+        $data['name'] = $request->name;
+        $data['phone'] = $request->phone;
+        $data['address'] = $request->address;
+        $data['status'] = $request->status;
+        $data['note'] = $request->note;
+
+        DB::table('oders')->insert($data);
+
+        Cart::destroy();
+        return Redirect::to('/show-cart');
+     }
 }

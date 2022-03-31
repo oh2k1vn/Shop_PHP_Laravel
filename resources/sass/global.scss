@@ -1,11 +1,10 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
 
 // Body
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 $box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
@@ -18,9 +17,10 @@ $border-radius: 0.75rem;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-}   
-ul,li {
+    font-family: "Poppins", sans-serif;
+}
+ul,
+li {
     list-style: none;
 }
 
@@ -37,4 +37,14 @@ ul,li {
     text-align: center;
     padding: 10px;
     font-weight: bold;
+}
+.filterDiv {
+    float: left;
+    background-color: #2196f3;
+    color: #ffffff;
+    width: 100px;
+    line-height: 100px;
+    text-align: center;
+    margin: 2px;
+    display: none;
 }

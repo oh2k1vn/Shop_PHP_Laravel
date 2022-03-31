@@ -17,11 +17,15 @@
             <div class="mid-header container">
                 <a href="{{ route('homePage') }}" class="logo">GOB BREAKER</a>
                 <div class="search">
-                    <input type="text" placeholder="Tìm kiếm sản phẩm ...">
-                    <i class='bx bx-search-alt'></i>
+                    <form action="{{URL::to('/tim-kiem')}}" method="post" style="height: 100%">
+                    {{ csrf_field() }}
+                    <input type="text" name="keyword" placeholder="Tìm kiếm sản phẩm ...">
+                    <button style="border: none"><i class='bx bx-search-alt'></i>
+                    </button>    
+                    </form>
                 </div>
                 <ul class="user-menu">
-                    <li><a href="#"><i class='bx bx-bell'></i></a></li>
+                    {{-- <li><a href="#"><i class='bx bx-bell'></i></a></li> --}}
                     <li><a href="{{ route('loginPage') }}"><i class='bx bx-user-circle'></i></a></li>
                     <li><a href="{{ route('checkoutPage') }}"><i class='bx bx-cart'></i></a></li>
                 </ul>

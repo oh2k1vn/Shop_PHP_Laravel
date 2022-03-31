@@ -18,9 +18,11 @@
                             {{$item->content}}
                         </p>
                         <div class="top-down trans-delay-0-6">
-                            <button class="btn-flat btn-hover">
-                                <a href="{{$item->route}}">Mua ngay</a>
-                            </button>
+                            <a href="{{$item->route}}">
+                                <button class="btn-flat btn-hover">
+                                    Mua ngay
+                                </button>
+                              </a>
                         </div>
                     </div>
                 </div>

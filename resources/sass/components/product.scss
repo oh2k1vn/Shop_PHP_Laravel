@@ -1,0 +1,46 @@
+.product {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    &_item {
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin: 1rem 0.5rem;
+
+        display: none;
+        transition: 0.4s;
+        &:hover {
+            border: 1px solid tomato;
+            box-shadow: 0 0 20px rgba(255, 99, 71, 0.404);
+        }
+        img {
+            max-width: 100%;
+            object-fit: cover;
+        }
+        h3 {
+            padding: 0 1rem;
+            font-weight: bold;
+        }
+        &_footer {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            span {
+                &:nth-child(1) {
+                    font-weight: bold;
+                    padding-top: 0.2rem;
+                    border-top: 3px solid;
+                    border-color: tomato;
+                }
+                &:nth-child(2) {
+                    padding: 0.5rem;
+                    background-color: rgb(255, 208, 199);
+                    color: tomato;
+                    font-weight: 600;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}

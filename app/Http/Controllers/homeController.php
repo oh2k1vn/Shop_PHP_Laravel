@@ -37,6 +37,7 @@ class homeController extends Controller
 
         $products = product::orderBy('id', 'desc')->get();
 
+        
 
         return view('home.product')->with('products',$products)->with('cate_product',$cate_product)->with('brand_product',$brand_product);
     }
@@ -75,9 +76,13 @@ class homeController extends Controller
 
 
     public function sigon(){
-      
-
+    
         return view('home.sigon');
+    }
+
+    public function sigup(){
+    
+        return view('home.sigup');
     }
 
     public function about(){
@@ -123,4 +128,19 @@ class homeController extends Controller
 
         return view('home.brand')->with('cate_product',$cate_product)->with('brand_product',$brand_product)->with('brand_by_id',$brand_by_id)->with( 'brand_name',$brand_name);
     }
+
+    public function search(Request $request){
+
+        $keyword = $request->keyword;
+
+        
+        $cate_product = category::orderBy('id', 'desc')->get();
+        $brand_product = brand::orderBy('id', 'desc')->get();
+        
+        $search_product = product::where('title','like','%'.$keyword.'%')->get();
+        // dd($search_product);
+
+        return view('home.search',compact('cate_product','brand_product','search_product','keyword'));
+    }
+
 }
